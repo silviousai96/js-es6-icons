@@ -113,12 +113,47 @@ const colors = [
 </div> 
 */
 
+
+
 // Milestone 1
 // Partendo dalla seguente struttura dati , 
 // mostriamo in pagina tutte le icone disponibili come da layout.
 
+//FUNZIONE CHE POPOLA UN CONTAINER CON LE ICONE.
+//l'argomento iconsArray corrisponde ad un array di oggetti, ogni oggetto è un icona.
+//l'argomento container sarà un oggetto jQuery che rappresenta l'elemento in cui stampare le icone
+// la funzione non ha return. 
+
+function printIcons(iconsArray, container) {
+	//ciclo forEach per scrivere le icone nel container
+
+	iconsArray.forEach((element) => {
+		//console.log(element);
+		
+		//destrutturiamo element per leggere le informazioni
+		const {name, prefix, family} = element;
+		
+		const iconElementHTML = 
+		`
+		<div class="icon">
+			<i class="${family} ${prefix}${name}"></i>
+			<div>
+				${name}
+			</div>
+		</div>
+		`;
+
+		container.append(iconElementHTML);
+	});
+}
+
+const iconsContainer = $('#icons-container');
+printIcons(icons, iconsContainer );
+
 // Milestone 2
 // Coloriamo le icone per tipo
+
+
 
 // Milestone 3
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
